@@ -7,6 +7,9 @@ ruby '3.1.2'
 gem 'rails', '~> 6.1.5', '>= 6.1.5.1'
 #tzinfo-data
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.5'
+
+gem 'devise', '~> 4.7', '>= 4.7.1'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server

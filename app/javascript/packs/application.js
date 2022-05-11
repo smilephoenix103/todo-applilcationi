@@ -11,3 +11,7 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require('bootstrap')
+import 'bootstrap/dist/css/bootstrap'
+
