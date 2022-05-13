@@ -12,6 +12,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require("../components/TodoApp");
 require('bootstrap')
 import 'bootstrap/dist/css/bootstrap'
 
