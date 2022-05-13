@@ -5,6 +5,7 @@ import axios from "axios"
 
 import TodoItems from "./TodoItems";
 import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 
 class TodoApp extends React.Component {
     constructor(props) {
@@ -12,10 +13,14 @@ class TodoApp extends React.Component {
         this.state = {
             todoItems:[]
         };
+        this.getTodoItems = this.getTodoItems.bind(this);
+        this.createTodoItem = this.createTodoItem.bind(this);
     }
+
     componentDidMount() {
         this.getTodoItems();
     }
+
     getTodoItems() {
         axios
             .get("/api/v1/todo_items")
@@ -27,13 +32,22 @@ class TodoApp extends React.Component {
                 console.log(error);
             });
     }
+
+    createTodoItem(todoItem) {
+        const todoItems = [todoItem, ...this.state.todoItems];
+        this.setState({ todoItems });
+    }
+
     render() {
         return (
-         <TodoItems>
-             {this.state.todoItems.map(todoItem => (
-                 <TodoItem key={todoItem.id} todoItem={todoItem}/>
-             ))}
-         </TodoItems>
+            <>
+                <TodoForm createTodoItem={this.createTodoItem}/>
+                <TodoItems>
+                    {this.state.todoItems.map(todoItem => (
+                        <TodoItem key={todoItem.id} todoItem={todoItem}/>
+                    ))}
+                </TodoItems>
+            </>
         )
     }
 }
