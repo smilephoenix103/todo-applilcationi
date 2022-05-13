@@ -32,7 +32,8 @@ class TodoApp extends React.Component {
 
     getTodoItems() {
         axios
-            .get("/broken-end-point")
+            //.get("/broken-end-point")
+            .get("/api/v1/todo_items")
             .then(response => {
                 this.clearErrors();
                 this.setState({isLoading: true});
