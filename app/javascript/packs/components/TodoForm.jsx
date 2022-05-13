@@ -24,9 +24,10 @@ class TodoForm extends React.Component {
             .then(response => {
                 const todoItem = response.data
                 this.props.createTodoItem(todoItem)
+                this.props.clearErrors();
             })
             .catch(error => {
-                console.log(error)
+                this.props.handleErrors(error);
             })
         e.target.reset()
     }
@@ -40,7 +41,7 @@ class TodoForm extends React.Component {
                             type="text"
                             name="title"
                             ref={this.titleRef}
-                            required
+                            //required
                             className="form-control"
                             id="title"
                             placeholder="Write your todo item here..."
@@ -61,4 +62,6 @@ export default TodoForm
 
 TodoForm.propTypes = {
     createTodoItem: PropTypes.func.isRequired,
+    handleErrors: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
 }
